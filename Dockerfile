@@ -19,4 +19,4 @@ COPY --from=build /app/out .
 EXPOSE 80
 
 # Run the app
-ENTRYPOINT ["dotnet", "FinanceApi.dll"]
+ENTRYPOINT ["dotnet", "financeBE.dll"]
