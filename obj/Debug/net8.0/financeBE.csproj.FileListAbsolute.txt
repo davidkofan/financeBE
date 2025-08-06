@@ -40,3 +40,4 @@ C:\Users\fanco\source\repos\financeBE\obj\Debug\net8.0\refint\financeBE.dll
 C:\Users\fanco\source\repos\financeBE\obj\Debug\net8.0\financeBE.pdb
 C:\Users\fanco\source\repos\financeBE\obj\Debug\net8.0\financeBE.genruntimeconfig.cache
 C:\Users\fanco\source\repos\financeBE\obj\Debug\net8.0\ref\financeBE.dll
+C:\Users\fanco\source\repos\financeBE\obj\Debug\net8.0\financeBE.sourcelink.json

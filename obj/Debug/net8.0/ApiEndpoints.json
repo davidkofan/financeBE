@@ -48,6 +48,22 @@
   },
   {
     "ContainingType": "FinanceApi.Controllers.AccountGroupsController",
+    "Method": "DeleteGroup",
+    "RelativePath": "api/AccountGroups/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "FinanceApi.Controllers.AccountGroupsController",
     "Method": "GetOverviewWithAllBalances",
     "RelativePath": "api/AccountGroups/overview/full",
     "HttpMethod": "GET",
@@ -115,6 +131,22 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "FinanceApi.Controllers.AccountsController",
+    "Method": "DeleteAccount",
+    "RelativePath": "api/Accounts/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "FinanceApi.Controllers.BalancesController",
     "Method": "CreateBalance",
     "RelativePath": "api/Balances",
@@ -162,6 +194,22 @@
       {
         "Name": "balance",
         "Type": "Balance",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "FinanceApi.Controllers.BalancesController",
+    "Method": "DeleteBalance",
+    "RelativePath": "api/Balances/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.String",
         "IsRequired": true
       }
     ],
