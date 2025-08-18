@@ -25,7 +25,7 @@ public class MonthlyBalancesController : ControllerBase
     public async Task<IActionResult> CreateMonthlyBalance(MonthlyBalance monthlyBalance)
     {
         var created = await _service.CreateMonthlyBalanceAsync(monthlyBalance);
-        return CreatedAtAction(nameof(GetMonthlyBalances), new { accountId = monthlyBalance.FinancialYearId }, created);
+        return CreatedAtAction(nameof(GetMonthlyBalances), new { financialYearId = monthlyBalance.FinancialYearId }, created);
     }
 
     [HttpPut("{id}")]

@@ -39,7 +39,7 @@ public class BusinessFinanceService
     }
 
     // ------------------------------------------
-    // BALANCES
+    // MONTHLY BALANCES
     // ------------------------------------------
 
     public async Task<List<MonthlyBalance>> GetMonthlyBalancesByFinancialYearAsync(string financialYearId) =>
