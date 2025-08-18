@@ -1,20 +1,22 @@
-# Build stage
+# Stage 1: build
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
-WORKDIR /src
-
-# Skopíruj csproj a obnov závislosti
-COPY financeBE/financeBE.csproj financeBE/
-RUN dotnet restore financeBE/financeBE.csproj
-
-# Skopíruj celý projekt a buildni
-COPY . .
-WORKDIR /src/financeBE
-RUN dotnet publish -c Release -o /app/publish
-
-# Runtime stage
-FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS runtime
 WORKDIR /app
-COPY --from=build /app/publish .
 
+# Copy csproj and restore as distinct layers
+COPY *.csproj ./
+RUN dotnet restore
+
+# Copy everything else and build
+COPY . ./
+RUN dotnet publish -c Release -o out
+
+# Stage 2: run
+FROM mcr.microsoft.com/dotnet/aspnet:8.0
+WORKDIR /app
+COPY --from=build /app/out .
+
+# Expose port (default for ASP.NET)
 EXPOSE 80
+
+# Run the app
 ENTRYPOINT ["dotnet", "financeBE.dll"]
