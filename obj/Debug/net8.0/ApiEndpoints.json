@@ -1,6 +1,6 @@
 [
   {
-    "ContainingType": "FinanceApi.Controllers.AccountGroupsController",
+    "ContainingType": "financeBE.Controllers.AccountsBalance.AccountGroupsController",
     "Method": "GetGroups",
     "RelativePath": "api/AccountGroups",
     "HttpMethod": "GET",
@@ -10,7 +10,7 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "FinanceApi.Controllers.AccountGroupsController",
+    "ContainingType": "financeBE.Controllers.AccountsBalance.AccountGroupsController",
     "Method": "CreateGroup",
     "RelativePath": "api/AccountGroups",
     "HttpMethod": "POST",
@@ -19,14 +19,14 @@
     "Parameters": [
       {
         "Name": "group",
-        "Type": "FinanceApi.Models.AccountGroup",
+        "Type": "financeBE.Models.AccountsBalance.AccountGroup",
         "IsRequired": true
       }
     ],
     "ReturnTypes": []
   },
   {
-    "ContainingType": "FinanceApi.Controllers.AccountGroupsController",
+    "ContainingType": "financeBE.Controllers.AccountsBalance.AccountGroupsController",
     "Method": "UpdateGroup",
     "RelativePath": "api/AccountGroups/{id}",
     "HttpMethod": "PUT",
@@ -40,14 +40,14 @@
       },
       {
         "Name": "group",
-        "Type": "FinanceApi.Models.AccountGroup",
+        "Type": "financeBE.Models.AccountsBalance.AccountGroup",
         "IsRequired": true
       }
     ],
     "ReturnTypes": []
   },
   {
-    "ContainingType": "FinanceApi.Controllers.AccountGroupsController",
+    "ContainingType": "financeBE.Controllers.AccountsBalance.AccountGroupsController",
     "Method": "DeleteGroup",
     "RelativePath": "api/AccountGroups/{id}",
     "HttpMethod": "DELETE",
@@ -63,7 +63,7 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "FinanceApi.Controllers.AccountGroupsController",
+    "ContainingType": "financeBE.Controllers.AccountsBalance.AccountGroupsController",
     "Method": "GetOverviewWithAllBalances",
     "RelativePath": "api/AccountGroups/overview/full",
     "HttpMethod": "GET",
@@ -73,7 +73,7 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "FinanceApi.Controllers.AccountsController",
+    "ContainingType": "financeBE.Controllers.AccountsBalance.AccountsController",
     "Method": "GetAccounts",
     "RelativePath": "api/Accounts",
     "HttpMethod": "GET",
@@ -94,7 +94,7 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "FinanceApi.Controllers.AccountsController",
+    "ContainingType": "financeBE.Controllers.AccountsBalance.AccountsController",
     "Method": "CreateAccount",
     "RelativePath": "api/Accounts",
     "HttpMethod": "POST",
@@ -110,7 +110,7 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "FinanceApi.Controllers.AccountsController",
+    "ContainingType": "financeBE.Controllers.AccountsBalance.AccountsController",
     "Method": "UpdateAccount",
     "RelativePath": "api/Accounts/{id}",
     "HttpMethod": "PUT",
@@ -131,7 +131,7 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "FinanceApi.Controllers.AccountsController",
+    "ContainingType": "financeBE.Controllers.AccountsBalance.AccountsController",
     "Method": "DeleteAccount",
     "RelativePath": "api/Accounts/{id}",
     "HttpMethod": "DELETE",
@@ -147,7 +147,7 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "FinanceApi.Controllers.BalancesController",
+    "ContainingType": "financeBE.Controllers.AccountsBalance.BalancesController",
     "Method": "CreateBalance",
     "RelativePath": "api/Balances",
     "HttpMethod": "POST",
@@ -163,7 +163,7 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "FinanceApi.Controllers.BalancesController",
+    "ContainingType": "financeBE.Controllers.AccountsBalance.BalancesController",
     "Method": "GetBalances",
     "RelativePath": "api/Balances/{accountId}",
     "HttpMethod": "GET",
@@ -179,7 +179,7 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "FinanceApi.Controllers.BalancesController",
+    "ContainingType": "financeBE.Controllers.AccountsBalance.BalancesController",
     "Method": "UpdateBalance",
     "RelativePath": "api/Balances/{id}",
     "HttpMethod": "PUT",
@@ -200,7 +200,7 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "FinanceApi.Controllers.BalancesController",
+    "ContainingType": "financeBE.Controllers.AccountsBalance.BalancesController",
     "Method": "DeleteBalance",
     "RelativePath": "api/Balances/{id}",
     "HttpMethod": "DELETE",
@@ -210,6 +210,53 @@
       {
         "Name": "id",
         "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "financeBE.Controllers.BusinessFinance.FinancialYearsController",
+    "Method": "GetFinancialYears",
+    "RelativePath": "api/FinancialYears",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "financeBE.Controllers.BusinessFinance.FinancialYearsController",
+    "Method": "CreateFinancialYear",
+    "RelativePath": "api/FinancialYears",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "financialYear",
+        "Type": "FinancialYear",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "financeBE.Controllers.BusinessFinance.FinancialYearsController",
+    "Method": "UpdateFinancialYear",
+    "RelativePath": "api/FinancialYears/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "financialYear",
+        "Type": "FinancialYear",
         "IsRequired": true
       }
     ],

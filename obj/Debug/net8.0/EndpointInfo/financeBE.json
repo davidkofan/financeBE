@@ -350,6 +350,88 @@
           }
         }
       }
+    },
+    "/api/FinancialYears": {
+      "get": {
+        "tags": [
+          "FinancialYears"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "FinancialYears"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/FinancialYear"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/FinancialYear"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/FinancialYear"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/FinancialYears/{id}": {
+      "put": {
+        "tags": [
+          "FinancialYears"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/FinancialYear"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/FinancialYear"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/FinancialYear"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
     }
   },
   "components": {
@@ -414,6 +496,36 @@
             "format": "int32"
           },
           "amount": {
+            "type": "number",
+            "format": "double"
+          }
+        },
+        "additionalProperties": false
+      },
+      "FinancialYear": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "nullable": true
+          },
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "description": {
+            "type": "string",
+            "nullable": true
+          },
+          "additionalTax": {
+            "type": "number",
+            "format": "double"
+          },
+          "additionalHealthInsurance": {
+            "type": "number",
+            "format": "double"
+          },
+          "additionalSocialInsurance": {
             "type": "number",
             "format": "double"
           }

@@ -1,7 +1,7 @@
 ﻿using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
 
-namespace FinanceApi.Models;
+namespace financeBE.Models.AccountsBalance;
 
 public class AccountGroup
 {

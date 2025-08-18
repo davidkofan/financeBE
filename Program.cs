@@ -5,7 +5,8 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 
 builder.Services.AddControllers();
-builder.Services.AddSingleton<FinanceService>();
+builder.Services.AddSingleton<AccountsBalanceService>();
+builder.Services.AddSingleton<BusinessFinanceService>();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 

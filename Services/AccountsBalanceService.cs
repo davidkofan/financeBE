@@ -1,17 +1,17 @@
-﻿using FinanceApi.Models;
+﻿using financeBE.Models.AccountsBalance;
 using Microsoft.Extensions.Configuration;
 using MongoDB.Driver;
 using System.Text.RegularExpressions;
 
 namespace FinanceApi.Services;
 
-public class FinanceService
+public class AccountsBalanceService
 {
     private readonly IMongoCollection<Account> _accounts;
     private readonly IMongoCollection<Balance> _balances;
     private readonly IMongoCollection<AccountGroup> _groups;
 
-    public FinanceService(IConfiguration config)
+    public AccountsBalanceService(IConfiguration config)
     {
         var client = new MongoClient(config["MongoDB:ConnectionString"]);
         var database = client.GetDatabase(config["MongoDB:Database"]);
@@ -138,16 +138,16 @@ public class FinanceService
                     Name = acc.Name,
                     Description = acc.Description,
                     Balances = balances
-    .Where(b => b.AccountId == acc.Id)
-    .Select(b => new BalanceDto
-    {
-        Year = b.Year,
-        Month = b.Month,
-        Amount = b.Amount
-    })
-    .OrderBy(b => b.Year)
-    .ThenBy(b => b.Month)
-    .ToList()
+                        .Where(b => b.AccountId == acc.Id)
+                        .Select(b => new BalanceDto
+                        {
+                            Year = b.Year,
+                            Month = b.Month,
+                            Amount = b.Amount
+                        })
+                        .OrderBy(b => b.Year)
+                        .ThenBy(b => b.Month)
+                        .ToList()
                 })
                 .ToList()
         }).ToList();

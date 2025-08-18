@@ -1,16 +1,16 @@
-﻿using FinanceApi.Models;
-using FinanceApi.Services;
+﻿using FinanceApi.Services;
+using financeBE.Models.AccountsBalance;
 using Microsoft.AspNetCore.Mvc;
 
-namespace FinanceApi.Controllers;
+namespace financeBE.Controllers.AccountsBalance;
 
 [ApiController]
 [Route("api/[controller]")]
 public class AccountGroupsController : ControllerBase
 {
-    private readonly FinanceService _service;
+    private readonly AccountsBalanceService _service;
 
-    public AccountGroupsController(FinanceService service)
+    public AccountGroupsController(AccountsBalanceService service)
     {
         _service = service;
     }
