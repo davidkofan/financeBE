@@ -261,5 +261,74 @@
       }
     ],
     "ReturnTypes": []
+  },
+  {
+    "ContainingType": "financeBE.Controllers.BusinessFinance.MonthlyBalancesController",
+    "Method": "CreateMonthlyBalance",
+    "RelativePath": "api/MonthlyBalances",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "monthlyBalance",
+        "Type": "MonthlyBalance",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "financeBE.Controllers.BusinessFinance.MonthlyBalancesController",
+    "Method": "GetMonthlyBalances",
+    "RelativePath": "api/MonthlyBalances/{financialYearId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "financialYearId",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "financeBE.Controllers.BusinessFinance.MonthlyBalancesController",
+    "Method": "UpdateMonthlyBalance",
+    "RelativePath": "api/MonthlyBalances/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "monthlyBalance",
+        "Type": "MonthlyBalance",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "financeBE.Controllers.BusinessFinance.MonthlyBalancesController",
+    "Method": "DeleteMonthlyBalance",
+    "RelativePath": "api/MonthlyBalances/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
   }
 ]
