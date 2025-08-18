@@ -14,7 +14,7 @@ public class MonthlyBalance
     public string? Description { get; set; }
     public decimal Income { get; set; }
     public decimal Tax { get; set; }
-    public decimal Insurance { get; set; }
+    public decimal HealthInsurance { get; set; }
     public decimal SocialInsurance { get; set; }
 
 }
