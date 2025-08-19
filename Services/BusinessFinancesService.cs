@@ -1,4 +1,5 @@
-﻿using financeBE.Models.AccountsBalance;
+﻿using financeBE.DTOs;
+using financeBE.Models.AccountsBalance;
 using Microsoft.Extensions.Configuration;
 using MongoDB.Driver;
 using System.Text.RegularExpressions;
@@ -36,6 +37,33 @@ public class BusinessFinanceService
     {
         var result = await _financialYears.ReplaceOneAsync(g => g.Id == id, updated);
         return result.MatchedCount > 0 ? updated : null;
+    }
+
+    public async Task<bool> DeleteFinancialYearAsync(string id)
+    {
+        var hasBalance = await _monthlyBalances.Find(a => a.FinancialYearId == id).AnyAsync();
+        if (hasBalance) return false;
+
+        var result = await _financialYears.DeleteOneAsync(g => g.Id == id);
+        return result.DeletedCount > 0;
+    }
+
+    public async Task<List<FinancialYearWithBalancesDto>> GetFinancialYearsWithAllBalancesAsync()
+    {
+        var financialYears = await _financialYears.Find(_ => true).ToListAsync();
+        var monthlyBalances = await _monthlyBalances.Find(_ => true).ToListAsync();
+
+        var result = financialYears
+        .Select(fy => new FinancialYearWithBalancesDto
+        {
+            FinancialYear = fy,
+            MonthlyBalances = monthlyBalances
+                .Where(mb => mb.FinancialYearId == fy.Id)
+                .ToList()
+        })
+        .ToList();
+
+        return result;
     }
 
     // ------------------------------------------

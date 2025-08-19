@@ -49,6 +49,44 @@ public class AccountsBalanceService
         return result.DeletedCount > 0;
     }
 
+    public async Task<List<AccountGroupWithAccountsDto>> GetGroupsWithAccountsAndAllBalancesAsync()
+    {
+        var groups = await _groups.Find(_ => true).ToListAsync();
+        var accounts = await _accounts.Find(_ => true).ToListAsync();
+        var accountIds = accounts.Select(a => a.Id).ToList();
+
+        var balances = await _balances.Find(b => accountIds.Contains(b.AccountId)).ToListAsync();
+
+        var result = groups.Select(group => new AccountGroupWithAccountsDto
+        {
+            Id = group.Id,
+            Name = group.Name,
+            Description = group.Description,
+            Accounts = accounts
+                .Where(acc => acc.GroupId == group.Id)
+                .Select(acc => new AccountWithAllBalancesDto
+                {
+                    Id = acc.Id,
+                    Name = acc.Name,
+                    Description = acc.Description,
+                    Balances = balances
+                        .Where(b => b.AccountId == acc.Id)
+                        .Select(b => new BalanceDto
+                        {
+                            Year = b.Year,
+                            Month = b.Month,
+                            Amount = b.Amount
+                        })
+                        .OrderBy(b => b.Year)
+                        .ThenBy(b => b.Month)
+                        .ToList()
+                })
+                .ToList()
+        }).ToList();
+
+        return result;
+    }
+
     // ------------------------------------------
     // ACCOUNTS
     // ------------------------------------------
@@ -114,45 +152,6 @@ public class AccountsBalanceService
     {
         var result = await _balances.DeleteOneAsync(b => b.Id == id);
         return result.DeletedCount > 0;
-    }
-
-
-    public async Task<List<AccountGroupWithAccountsDto>> GetGroupsWithAccountsAndAllBalancesAsync()
-    {
-        var groups = await _groups.Find(_ => true).ToListAsync();
-        var accounts = await _accounts.Find(_ => true).ToListAsync();
-        var accountIds = accounts.Select(a => a.Id).ToList();
-
-        var balances = await _balances.Find(b => accountIds.Contains(b.AccountId)).ToListAsync();
-
-        var result = groups.Select(group => new AccountGroupWithAccountsDto
-        {
-            Id = group.Id,
-            Name = group.Name,
-            Description = group.Description,
-            Accounts = accounts
-                .Where(acc => acc.GroupId == group.Id)
-                .Select(acc => new AccountWithAllBalancesDto
-                {
-                    Id = acc.Id,
-                    Name = acc.Name,
-                    Description = acc.Description,
-                    Balances = balances
-                        .Where(b => b.AccountId == acc.Id)
-                        .Select(b => new BalanceDto
-                        {
-                            Year = b.Year,
-                            Month = b.Month,
-                            Amount = b.Amount
-                        })
-                        .OrderBy(b => b.Year)
-                        .ThenBy(b => b.Month)
-                        .ToList()
-                })
-                .ToList()
-        }).ToList();
-
-        return result;
     }
 }
 

@@ -36,11 +36,18 @@ public class FinancialYearsController : ControllerBase
         return Ok(updated);
     }
 
-    //[HttpDelete("{id}")]
-    //public async Task<IActionResult> DeleteFinancialYear(string id)
-    //{
-    //    var deleted = await _service.DeleteFinancialYearAsync(id);
-    //    if (!deleted) return NotFound();
-    //    return NoContent(); // 204
-    //}
+    [HttpDelete("{id}")]
+    public async Task<IActionResult> DeleteFinancialYear(string id)
+    {
+        var deleted = await _service.DeleteFinancialYearAsync(id);
+        if (!deleted) return NotFound();
+        return NoContent(); // 204
+    }
+
+    [HttpGet("overview/full")]
+    public async Task<IActionResult> GetOverviewWithAllBalances()
+    {
+        var data = await _service.GetFinancialYearsWithAllBalancesAsync();
+        return Ok(data);
+    }
 }

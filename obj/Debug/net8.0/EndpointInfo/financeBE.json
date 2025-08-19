@@ -431,6 +431,38 @@
             "description": "OK"
           }
         }
+      },
+      "delete": {
+        "tags": [
+          "FinancialYears"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/FinancialYears/overview/full": {
+      "get": {
+        "tags": [
+          "FinancialYears"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
       }
     },
     "/api/MonthlyBalances/{financialYearId}": {
