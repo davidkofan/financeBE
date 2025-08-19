@@ -673,7 +673,7 @@
             "type": "number",
             "format": "double"
           },
-          "insurance": {
+          "healthInsurance": {
             "type": "number",
             "format": "double"
           },

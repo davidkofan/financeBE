@@ -1,4 +1,5 @@
 ﻿using FinanceApi.Services;
+using financeBE.DTOs;
 using Microsoft.AspNetCore.Mvc;
 
 namespace financeBE.Controllers.BusinessFinance;
@@ -17,8 +18,21 @@ public class MonthlyBalancesController : ControllerBase
     [HttpGet("{financialYearId}")]
     public async Task<IActionResult> GetMonthlyBalances(string financialYearId)
     {
+        var financialYears = await _service.GetFinancialYearsAsync();
+        var financialYear = financialYears.FirstOrDefault(fy => fy.Id == financialYearId);
+
+        if (financialYear == null)
+            return NotFound($"FinancialYear with id {financialYearId} not found.");
+
         var monthlyBalances = await _service.GetMonthlyBalancesByFinancialYearAsync(financialYearId);
-        return Ok(monthlyBalances);
+
+        var response = new FinancialYearWithBalancesDto
+        {
+            FinancialYear = financialYear,
+            MonthlyBalances = monthlyBalances
+        };
+
+        return Ok(response);
     }
 
     [HttpPost]
