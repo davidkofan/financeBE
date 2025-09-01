@@ -674,6 +674,15 @@
           "additionalSocialInsurance": {
             "type": "number",
             "format": "double"
+          },
+          "additionalTaxAssumption": {
+            "type": "boolean"
+          },
+          "additionalHealthInsuranceAssumption": {
+            "type": "boolean"
+          },
+          "additionalSocialInsuranceAssumption": {
+            "type": "boolean"
           }
         },
         "additionalProperties": false
@@ -712,6 +721,15 @@
           "socialInsurance": {
             "type": "number",
             "format": "double"
+          },
+          "taxAssumption": {
+            "type": "boolean"
+          },
+          "healthInsuranceAssumption": {
+            "type": "boolean"
+          },
+          "socialInsuranceAssumption": {
+            "type": "boolean"
           }
         },
         "additionalProperties": false

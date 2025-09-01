@@ -17,4 +17,9 @@ public class MonthlyBalance
     public decimal HealthInsurance { get; set; }
     public decimal SocialInsurance { get; set; }
 
+    public bool TaxAssumption { get; set; }
+    public bool HealthInsuranceAssumption { get; set; }
+    public bool SocialInsuranceAssumption { get; set; }
+
+
 }

@@ -13,4 +13,9 @@ public class FinancialYear
     public decimal AdditionalHealthInsurance { get; set; }
     public decimal AdditionalSocialInsurance { get; set; }
 
+    public bool AdditionalTaxAssumption { get; set; }
+    public bool AdditionalHealthInsuranceAssumption { get; set; }
+    public bool AdditionalSocialInsuranceAssumption { get; set; }
+
+
 }
