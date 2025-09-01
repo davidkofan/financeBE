@@ -722,6 +722,9 @@
             "type": "number",
             "format": "double"
           },
+          "incomeAssumption": {
+            "type": "boolean"
+          },
           "taxAssumption": {
             "type": "boolean"
           },
