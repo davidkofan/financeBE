@@ -7,6 +7,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 builder.Services.AddSingleton<AccountsBalanceService>();
 builder.Services.AddSingleton<BusinessFinanceService>();
+builder.Services.AddSingleton<ExpensesAndIncomeService>();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
