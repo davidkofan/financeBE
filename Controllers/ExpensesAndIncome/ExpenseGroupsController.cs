@@ -43,11 +43,11 @@ public class ExpenseGroupsController : ControllerBase
         return NoContent(); // 204
     }
 
-    //[HttpGet("overview/full")]
-    //public async Task<IActionResult> GetOverviewWithAllBalances()
-    //{
-    //    var data = await _service.GetGroupsWithAccountsAndAllBalancesAsync();
-    //    return Ok(data);
-    //}
+    [HttpGet("overview/full")]
+    public async Task<IActionResult> GetOverviewWithAllExpenses()
+    {
+        var data = await _service.GetExpensesGroupsWithExpensesAsync();
+        return Ok(data);
+    }
 
 }

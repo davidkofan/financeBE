@@ -353,6 +353,16 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "ExpenseGroupsController",
+    "Method": "GetOverviewWithAllExpenses",
+    "RelativePath": "api/ExpenseGroups/overview/full",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "financeBE.Controllers.BusinessFinance.FinancialYearsController",
     "Method": "GetFinancialYears",
     "RelativePath": "api/FinancialYears",

@@ -1,4 +1,5 @@
-﻿using financeBE.Models.AccountsBalance;
+﻿using financeBE.DTOs;
+using financeBE.Models.AccountsBalance;
 using Microsoft.Extensions.Configuration;
 using MongoDB.Driver;
 using System.Text.RegularExpressions;
@@ -47,43 +48,25 @@ public class ExpensesAndIncomeService
         return result.DeletedCount > 0;
     }
 
-    //public async Task<List<AccountGroupWithAccountsDto>> GetGroupsWithAccountsAndAllBalancesAsync()
-    //{
-    //    var groups = await _groups.Find(_ => true).ToListAsync();
-    //    var accounts = await _accounts.Find(_ => true).ToListAsync();
-    //    var accountIds = accounts.Select(a => a.Id).ToList();
+    public async Task<List<ExpensesGroupWithExpensesDto>> GetExpensesGroupsWithExpensesAsync()
+    {
+        var expensesGroups = await _expensesGroups.Find(_ => true).ToListAsync();
+        var expenses = await _expenses.Find(_ => true).ToListAsync();
 
-    //    var balances = await _balances.Find(b => accountIds.Contains(b.AccountId)).ToListAsync();
+        var result = expensesGroups
+        .Select(fy => new ExpensesGroupWithExpensesDto
+        {
+            Id = fy.Id,
+            Name = fy.Name,
+            Description = fy.Description,
+            Expenses = expenses
+                .Where(mb => mb.GroupId == fy.Id)
+                .ToList()
+        })
+        .ToList();
 
-    //    var result = groups.Select(group => new AccountGroupWithAccountsDto
-    //    {
-    //        Id = group.Id,
-    //        Name = group.Name,
-    //        Description = group.Description,
-    //        Accounts = accounts
-    //            .Where(acc => acc.GroupId == group.Id)
-    //            .Select(acc => new AccountWithAllBalancesDto
-    //            {
-    //                Id = acc.Id,
-    //                Name = acc.Name,
-    //                Description = acc.Description,
-    //                Balances = balances
-    //                    .Where(b => b.AccountId == acc.Id)
-    //                    .Select(b => new BalanceDto
-    //                    {
-    //                        Year = b.Year,
-    //                        Month = b.Month,
-    //                        Amount = b.Amount
-    //                    })
-    //                    .OrderBy(b => b.Year)
-    //                    .ThenBy(b => b.Month)
-    //                    .ToList()
-    //            })
-    //            .ToList()
-    //    }).ToList();
-
-    //    return result;
-    //}
+        return result;
+    }
 
     // ------------------------------------------
     // EXPENSES

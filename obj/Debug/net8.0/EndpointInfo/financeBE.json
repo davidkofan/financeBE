@@ -571,6 +571,18 @@
         }
       }
     },
+    "/api/ExpenseGroups/overview/full": {
+      "get": {
+        "tags": [
+          "ExpenseGroups"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/FinancialYears": {
       "get": {
         "tags": [
