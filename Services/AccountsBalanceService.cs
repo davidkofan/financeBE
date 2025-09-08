@@ -9,6 +9,7 @@ public class AccountsBalanceService
 {
     private readonly IMongoCollection<Account> _accounts;
     private readonly IMongoCollection<Balance> _balances;
+    private readonly IMongoCollection<ExpectedIncrease> _expectedIncreases;
     private readonly IMongoCollection<AccountGroup> _groups;
 
     public AccountsBalanceService(IConfiguration config)
@@ -17,6 +18,7 @@ public class AccountsBalanceService
         var database = client.GetDatabase(config["MongoDB:Database"]);
 
         _accounts = database.GetCollection<Account>(config["MongoDB:AccountsCollection"]);
+        _expectedIncreases = database.GetCollection<ExpectedIncrease>(config["MongoDB:ExpectedIncreasesCollection"]);
         _balances = database.GetCollection<Balance>(config["MongoDB:BalancesCollection"]);
         _groups = database.GetCollection<AccountGroup>(config["MongoDB:GroupsCollection"]);
     }
@@ -53,6 +55,7 @@ public class AccountsBalanceService
     {
         var groups = await _groups.Find(_ => true).ToListAsync();
         var accounts = await _accounts.Find(_ => true).ToListAsync();
+        var expectedIncreases = await _expectedIncreases.Find(b => true).ToListAsync();
         var accountIds = accounts.Select(a => a.Id).ToList();
 
         var balances = await _balances.Find(b => accountIds.Contains(b.AccountId)).ToListAsync();
@@ -62,6 +65,17 @@ public class AccountsBalanceService
             Id = group.Id,
             Name = group.Name,
             Description = group.Description,
+            ExpectedIncreases = expectedIncreases
+                        .Where(b => b.GroupId == group.Id)
+                        .Select(b => new ExpectedIncreaseDto
+                        {
+                            Year = b.Year,
+                            Month = b.Month,
+                            Amount = b.Amount
+                        })
+                        .OrderBy(b => b.Year)
+                        .ThenBy(b => b.Month)
+                        .ToList(),
             Accounts = accounts
                 .Where(acc => acc.GroupId == group.Id)
                 .Select(acc => new AccountWithAllBalancesDto
@@ -151,6 +165,31 @@ public class AccountsBalanceService
     public async Task<bool> DeleteBalanceAsync(string id)
     {
         var result = await _balances.DeleteOneAsync(b => b.Id == id);
+        return result.DeletedCount > 0;
+    }
+
+    // ------------------------------------------
+    // EXPECTED INCREASES
+    // ------------------------------------------
+
+    public async Task<List<ExpectedIncrease>> GetExpectedIncreasesByAccountGroupAsync(string groupId) =>
+        await _expectedIncreases.Find(b => b.GroupId == groupId).ToListAsync();
+
+    public async Task<ExpectedIncrease> CreateExpectedIncreaseAsync(ExpectedIncrease expectedIncrease)
+    {
+        await _expectedIncreases.InsertOneAsync(expectedIncrease);
+        return expectedIncrease;
+    }
+
+    public async Task<ExpectedIncrease?> UpdateExpectedIncreaseAsync(string id, ExpectedIncrease updated)
+    {
+        var result = await _expectedIncreases.ReplaceOneAsync(b => b.Id == id, updated);
+        return result.MatchedCount > 0 ? updated : null;
+    }
+
+    public async Task<bool> DeleteExpectedIncreaseAsync(string id)
+    {
+        var result = await _expectedIncreases.DeleteOneAsync(b => b.Id == id);
         return result.DeletedCount > 0;
     }
 }

@@ -216,6 +216,75 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "financeBE.Controllers.AccountsBalance.ExpectedInrceasesController",
+    "Method": "CreateExpectedIncrease",
+    "RelativePath": "api/ExpectedInrceases",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "expectedIncrease",
+        "Type": "ExpectedIncrease",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "financeBE.Controllers.AccountsBalance.ExpectedInrceasesController",
+    "Method": "GetExpectedIncreases",
+    "RelativePath": "api/ExpectedInrceases/{accountGroupId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "accountGroupId",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "financeBE.Controllers.AccountsBalance.ExpectedInrceasesController",
+    "Method": "UpdateExpectedIncrease",
+    "RelativePath": "api/ExpectedInrceases/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "expectedIncrease",
+        "Type": "ExpectedIncrease",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "financeBE.Controllers.AccountsBalance.ExpectedInrceasesController",
+    "Method": "DeleteExpectedIncrease",
+    "RelativePath": "api/ExpectedInrceases/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "financeBE.Controllers.AccountsBalance.ExpenseController",
     "Method": "GetExpenses",
     "RelativePath": "api/Expense",

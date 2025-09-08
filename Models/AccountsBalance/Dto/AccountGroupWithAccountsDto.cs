@@ -4,4 +4,6 @@
     public string Name { get; set; }
     public string Description { get; set; }
     public List<AccountWithAllBalancesDto> Accounts { get; set; }
+    public List<ExpectedIncreaseDto> ExpectedIncreases { get; set; }
+
 }
