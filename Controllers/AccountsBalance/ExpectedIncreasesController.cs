@@ -5,11 +5,11 @@ namespace financeBE.Controllers.AccountsBalance;
 
 [ApiController]
 [Route("api/[controller]")]
-public class ExpectedInrceasesController : ControllerBase
+public class ExpectedIncreasesController : ControllerBase
 {
     private readonly AccountsBalanceService _service;
 
-    public ExpectedInrceasesController(AccountsBalanceService service)
+    public ExpectedIncreasesController(AccountsBalanceService service)
     {
         _service = service;
     }
