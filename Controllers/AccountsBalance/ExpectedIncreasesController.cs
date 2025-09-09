@@ -25,7 +25,7 @@ public class ExpectedIncreasesController : ControllerBase
     public async Task<IActionResult> CreateExpectedIncrease(ExpectedIncrease expectedIncrease)
     {
         var created = await _service.CreateExpectedIncreaseAsync(expectedIncrease);
-        return CreatedAtAction(nameof(GetExpectedIncreases), new { groupId = expectedIncrease.GroupId }, created);
+        return CreatedAtAction(nameof(GetExpectedIncreases), new { id = expectedIncrease.Id }, created);
     }
 
     [HttpPut("{id}")]
