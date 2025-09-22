@@ -351,10 +351,10 @@
         }
       }
     },
-    "/api/ExpectedInrceases/{accountGroupId}": {
+    "/api/ExpectedIncreases/{accountGroupId}": {
       "get": {
         "tags": [
-          "ExpectedInrceases"
+          "ExpectedIncreases"
         ],
         "parameters": [
           {
@@ -373,10 +373,10 @@
         }
       }
     },
-    "/api/ExpectedInrceases": {
+    "/api/ExpectedIncreases": {
       "post": {
         "tags": [
-          "ExpectedInrceases"
+          "ExpectedIncreases"
         ],
         "requestBody": {
           "content": {
@@ -404,10 +404,10 @@
         }
       }
     },
-    "/api/ExpectedInrceases/{id}": {
+    "/api/ExpectedIncreases/{id}": {
       "put": {
         "tags": [
-          "ExpectedInrceases"
+          "ExpectedIncreases"
         ],
         "parameters": [
           {
@@ -446,7 +446,7 @@
       },
       "delete": {
         "tags": [
-          "ExpectedInrceases"
+          "ExpectedIncreases"
         ],
         "parameters": [
           {
@@ -811,6 +811,238 @@
         }
       }
     },
+    "/api/Income": {
+      "get": {
+        "tags": [
+          "Income"
+        ],
+        "parameters": [
+          {
+            "name": "groupId",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "name",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Income"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Income"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Income"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Income"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Income/{id}": {
+      "put": {
+        "tags": [
+          "Income"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Income"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Income"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Income"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Income"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/IncomeGroups": {
+      "get": {
+        "tags": [
+          "IncomeGroups"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "IncomeGroups"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/IncomeGroup"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/IncomeGroup"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/IncomeGroup"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/IncomeGroups/{id}": {
+      "put": {
+        "tags": [
+          "IncomeGroups"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/IncomeGroup"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/IncomeGroup"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/IncomeGroup"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "IncomeGroups"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/IncomeGroups/overview/full": {
+      "get": {
+        "tags": [
+          "IncomeGroups"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/MonthlyBalances/{financialYearId}": {
       "get": {
         "tags": [
@@ -1099,6 +1331,50 @@
           },
           "additionalSocialInsuranceAssumption": {
             "type": "boolean"
+          }
+        },
+        "additionalProperties": false
+      },
+      "Income": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "nullable": true
+          },
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "amount": {
+            "type": "number",
+            "format": "double"
+          },
+          "description": {
+            "type": "string",
+            "nullable": true
+          },
+          "groupId": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "IncomeGroup": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "nullable": true
+          },
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "description": {
+            "type": "string",
+            "nullable": true
           }
         },
         "additionalProperties": false

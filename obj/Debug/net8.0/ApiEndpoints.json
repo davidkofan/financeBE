@@ -216,9 +216,9 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "financeBE.Controllers.AccountsBalance.ExpectedInrceasesController",
+    "ContainingType": "financeBE.Controllers.AccountsBalance.ExpectedIncreasesController",
     "Method": "CreateExpectedIncrease",
-    "RelativePath": "api/ExpectedInrceases",
+    "RelativePath": "api/ExpectedIncreases",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
@@ -232,9 +232,9 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "financeBE.Controllers.AccountsBalance.ExpectedInrceasesController",
+    "ContainingType": "financeBE.Controllers.AccountsBalance.ExpectedIncreasesController",
     "Method": "GetExpectedIncreases",
-    "RelativePath": "api/ExpectedInrceases/{accountGroupId}",
+    "RelativePath": "api/ExpectedIncreases/{accountGroupId}",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -248,9 +248,9 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "financeBE.Controllers.AccountsBalance.ExpectedInrceasesController",
+    "ContainingType": "financeBE.Controllers.AccountsBalance.ExpectedIncreasesController",
     "Method": "UpdateExpectedIncrease",
-    "RelativePath": "api/ExpectedInrceases/{id}",
+    "RelativePath": "api/ExpectedIncreases/{id}",
     "HttpMethod": "PUT",
     "IsController": true,
     "Order": 0,
@@ -269,9 +269,9 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "financeBE.Controllers.AccountsBalance.ExpectedInrceasesController",
+    "ContainingType": "financeBE.Controllers.AccountsBalance.ExpectedIncreasesController",
     "Method": "DeleteExpectedIncrease",
-    "RelativePath": "api/ExpectedInrceases/{id}",
+    "RelativePath": "api/ExpectedIncreases/{id}",
     "HttpMethod": "DELETE",
     "IsController": true,
     "Order": 0,
@@ -498,6 +498,153 @@
     "ContainingType": "financeBE.Controllers.BusinessFinance.FinancialYearsController",
     "Method": "GetOverviewWithAllBalances",
     "RelativePath": "api/FinancialYears/overview/full",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "financeBE.Controllers.AccountsBalance.IncomeController",
+    "Method": "GetIncomes",
+    "RelativePath": "api/Income",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "groupId",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "name",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "financeBE.Controllers.AccountsBalance.IncomeController",
+    "Method": "CreateIncome",
+    "RelativePath": "api/Income",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "income",
+        "Type": "Income",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "financeBE.Controllers.AccountsBalance.IncomeController",
+    "Method": "UpdateIncome",
+    "RelativePath": "api/Income/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "income",
+        "Type": "Income",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "financeBE.Controllers.AccountsBalance.IncomeController",
+    "Method": "DeleteIncome",
+    "RelativePath": "api/Income/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "IncomeGroupsController",
+    "Method": "GetGroups",
+    "RelativePath": "api/IncomeGroups",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "IncomeGroupsController",
+    "Method": "CreateGroup",
+    "RelativePath": "api/IncomeGroups",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "group",
+        "Type": "financeBE.Models.AccountsBalance.IncomeGroup",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "IncomeGroupsController",
+    "Method": "UpdateGroup",
+    "RelativePath": "api/IncomeGroups/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "group",
+        "Type": "financeBE.Models.AccountsBalance.IncomeGroup",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "IncomeGroupsController",
+    "Method": "DeleteGroup",
+    "RelativePath": "api/IncomeGroups/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "IncomeGroupsController",
+    "Method": "GetOverviewWithAllIncomes",
+    "RelativePath": "api/IncomeGroups/overview/full",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
