@@ -15,8 +15,9 @@ FROM mcr.microsoft.com/dotnet/aspnet:8.0
 WORKDIR /app
 COPY --from=build /app/out .
 
-# Expose port (default for ASP.NET)
-EXPOSE 80
+# Nastavenie portu pre .NET 8 (Render automaticky posiela $PORT, inak použije 8080)
+ENV ASPNETCORE_URLS=http://+:8080
+EXPOSE 8080
 
 # Run the app
 ENTRYPOINT ["dotnet", "financeBE.dll"]
